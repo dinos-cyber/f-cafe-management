@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+import ultil.IOCE170935;
 
 /**
  *
@@ -27,21 +28,20 @@ public class Kho {
 
     public void addSanPham() {
         boolean check;
+        boolean check2;
         String name;
         System.out.println("----- Nhap hang -----");
-        Scanner sc = new Scanner(System.in);
         do {
-            System.out.print("Nhap ten san pham: ");
-            name = sc.nextLine();
+            name = IOCE170935.getString("Nhap ten san pham: ", "Ten khong hop le", 1);
+
             check = searchSanPhamByName(name);
+  
             if (check == true) {
-                System.out.printf("San pham nay da ton tai\n", name);
+                System.out.printf("San pham nay da ton tai hoac chu cai dau cua san pham khong duoc viet hoa\n");
             }
         } while (check == true);
-        System.out.print("Nhap gia san pham: ");
-        int price = sc.nextInt();
-        System.out.print("Nhap so luong muon them vao kho: ");
-        int stock = sc.nextInt();
+        int price = IOCE170935.getInteger("Nhap gia san pham: ", "Gia san pham phai la so duong!", 0);
+        int stock = IOCE170935.getInteger("Nhap so luong muon them vao kho: ", "So luong san pham phai la so duong", 1);
         list.add(new DoBan(name, price, stock));
         System.out.println("Da them san pham thanh cong!");
     }
@@ -91,24 +91,22 @@ public class Kho {
             }
         };
         Collections.sort(list, cm);
+        System.out.println("Da sap xep san pham thanh cong!");
     }
 
     public void showKho() {
         DoBan db = new DoBan();
-        System.out.printf("|%-15s|%-10s|%-10s|\n", "Ten san pham", "Gia do ban", "So luong");
+        System.out.printf("|%-15s|%-15s|%-10s|\n", "Ten san pham", "Gia san pham", "So luong");
         for (DoBan doBan : list) {
             doBan.showInfo();
         }
     }
 
     public void setStock() {
-        DoBan db = new DoBan();
-        Scanner sc = new Scanner(System.in);
-        System.out.print("San pham muon chinh sua: ");
-        String reStockTen = sc.nextLine();
+        String reStockTen;
+        reStockTen = IOCE170935.getString("Nhap ten san pham muon chinh sua: ", "Ten khong hop le!", 1);
         if (searchSanPhamObjectByName(reStockTen) != null) {
-            System.out.print("Chinh sua so luong san pham: ");
-            int reStock = sc.nextInt();
+            int reStock = IOCE170935.getInteger("Chinh sua so luong san pham: ", "So luong san pham phai la so duong!", 1);
             for (DoBan doBan : list) {
                 if (reStockTen.equalsIgnoreCase(doBan.getName())) {
                     doBan.setStock(reStock);

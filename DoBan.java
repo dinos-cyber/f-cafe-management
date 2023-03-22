@@ -43,6 +43,6 @@ public class DoBan {
     }
     
     public void showInfo(){
-        System.out.printf("|%-15s|%-10d|%-10d|\n", this.name, this.price, this.stock);
+        System.out.printf("|%-15s|%-15d|%-10d|\n", this.name, this.price, this.stock);
     }
 }
