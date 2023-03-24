@@ -1,0 +1,8 @@
+Coce cole 10000 20
+Hao Hao 3000 50
+Mirinda 12000 15
+Nabati 5000 5
+Pepsu 10000 15
+Snack 15000 4
+Trau cung 15000 10
+Tiger 20000 0
